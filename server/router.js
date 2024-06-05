@@ -5,6 +5,9 @@ const userController = require('./controllers/user.js');
 const interfaceColController = require('./controllers/interfaceCol.js');
 const testController = require('./controllers/test.js');
 
+const shareController = require('./controllers/share.js')
+const runController = require('./controllers/run.js')
+
 const yapi = require('./yapi.js');
 const projectController = require('./controllers/project.js');
 const logController = require('./controllers/log.js');
@@ -50,6 +53,14 @@ let INTERFACE_CONFIG = {
   open: {
     prefix: '/open/',
     controller: openController
+  },
+  share: {
+    prefix: '/share/',
+    controller: shareController
+  },
+  run: {
+    prefix: '/run/',
+    controller: runController
   }
 };
 
@@ -105,6 +116,11 @@ let routerConfig = {
     {
       action: 'get',
       path: 'get',
+      method: 'get'
+    },
+    {
+      action: 'get',
+      path: 'share/get',
       method: 'get'
     }
   ],
@@ -217,6 +233,11 @@ let routerConfig = {
       method: 'get'
     },
     {
+      action: 'get',
+      path: 'share/get',
+      method: 'get'
+    },
+    {
       action: 'up',
       path: 'up',
       method: 'post'
@@ -316,6 +337,11 @@ let routerConfig = {
     {
       action: 'get',
       path: 'get',
+      method: 'get'
+    },
+    {
+      action: 'get',
+      path: 'share/get',
       method: 'get'
     },
     {
@@ -578,6 +604,35 @@ let routerConfig = {
       path: 'import_data',
       method: 'post'
     }
+  ],
+  share: [
+    {
+      action: 'add',
+      path: 'add',
+      method: 'post'
+    },
+    {
+      action: 'get',
+      path: 'get',
+      method: 'get'
+    },
+    {
+      action: 'get_by_iid',
+      path: 'get_by_iid',
+      method: 'get'
+    },
+    {
+      action: 'del',
+      path: 'del',
+      method: 'get'
+    },
+  ],
+  run: [
+    {
+      action: 'runCode',
+      path: 'add',
+      method: 'post'
+    },
   ]
 };
 

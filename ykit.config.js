@@ -34,7 +34,7 @@ function createScript(plugin, pathAlias) {
 }
 
 function initPlugins(configPlugin) {
-  configPlugin = require('../config.json').plugins;
+  configPlugin = require('./config.json').plugins;
   var systemConfigPlugin = require('./common/config.js').exts;
 
   var scripts = [];
@@ -175,12 +175,6 @@ module.exports = {
               require.resolve('sass-loader') +
               '?sourceMap'
           )
-        });
-
-        baseConfig.module.preLoaders.push({
-          test: /\.(js|jsx)$/,
-          exclude: /tui-editor|node_modules|google-diff.js/,
-          loader: 'eslint-loader'
         });
 
         baseConfig.module.preLoaders.push({

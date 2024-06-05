@@ -13,6 +13,7 @@ import copy from 'copy-to-clipboard';
 import SchemaTable from '../../../../components/SchemaTable/SchemaTable.js';
 
 const HTTP_METHOD = constants.HTTP_METHOD;
+import Share from './Share.js';
 
 @connect(state => {
   return {
@@ -380,6 +381,7 @@ class View extends Component {
           基本信息
         </h2>
         <div className="panel-view">
+          <Share></Share>
           <Row className="row">
             <Col span={4} className="colKey">
               接口名称：
@@ -493,6 +495,15 @@ class View extends Component {
               </Row>
             )}
         </div>
+        {this.props.currProject.env.length && (<h2 className="interface-title">环境</h2>)}
+        {this.props.currProject.env.length && (this.props.currProject.env.map(i => (<Row className='row'>
+            <Col span={4} className="colKey">
+              {i.name}
+            </Col>
+            <Col span={8} className="colName">
+              <span title={i.domain}>{i.domain}</span>
+            </Col></Row>))
+        )}
         {this.props.curData.desc && <h2 className="interface-title">备注</h2>}
         {this.props.curData.desc && (
           <div
